@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Registos do Simulador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        th {
+            background-color: #0074D9;
+            color: white;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registos Submetidos</h1>
+    {% if registos %}
+        <table>
+            <tr>
+                <th>Data e Hora</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+            {% for row in registos %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Não há registos para mostrar.</p>
+    {% endif %}
+</body>
+</html>
